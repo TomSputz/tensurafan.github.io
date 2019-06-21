@@ -1,12 +1,12 @@
 async function app(initConfigs){
 	// respoond to the incoming global configs
 	app.saveSettings = function(){
-		app.updateSettings(initConfigs.presist)
+		app.updateSettings(initConfigs.persist)
 	}
 
-	initConfigs.presist.theme = Object.prototype.hasOwnProperty.call(initConfigs.presist, "theme") ? initConfigs.presist.theme : "dark"
-	proxymity.watch(initConfigs.presist, "theme", updateTheme)
-	updateTheme(initConfigs.presist.theme)
+	initConfigs.persist.theme = Object.prototype.hasOwnProperty.call(initConfigs.persist, "theme") ? initConfigs.persist.theme : "dark"
+	proxymity.watch(initConfigs.persist, "theme", updateTheme)
+	updateTheme(initConfigs.persist.theme)
 
 	function updateTheme(newTheme){
 		if (newTheme && !document.documentElement.classList.contains(newTheme)){
@@ -24,12 +24,12 @@ async function app(initConfigs){
 	let router = app.router = app.routerFactory(document.getElementById("app"))
 
 	let navEl = document.getElementById("nav")
-	let nav = app.nav = await app.initNav(initConfigs.presist, router)
+	let nav = app.nav = await app.initNav(initConfigs.persist, router)
 	nav.appendTo(navEl)
 
 	let indexView = app.indexView = await app.initIndexView(initConfigs.volumeList, router)
 
-	let globalTermchoices = initConfigs.presist.chosenTerms = initConfigs.presist.chosenTerms || {}
+	let globalTermchoices = initConfigs.persist.chosenTerms = initConfigs.persist.chosenTerms || {}
 
 	let namePicker = app.namePicker = await app.initNamePicker(router, document.getElementById("app"), globalTermchoices)
 
@@ -37,9 +37,9 @@ async function app(initConfigs){
 
 	Object.keys(initConfigs.terms).forEach(term=>globalTermchoices[term] = globalTermchoices[term] || term)
 
-	let reader = app.reader = await app.initReader(initConfigs.volumeList, router, namePicker, initConfigs.terms, globalTermchoices, initConfigs.presist)
+	let reader = app.reader = await app.initReader(initConfigs.volumeList, router, namePicker, initConfigs.terms, globalTermchoices, initConfigs.persist)
 
-	let footer = app.footer = await app.initFooter(initConfigs.presist)
+	let footer = app.footer = await app.initFooter(initConfigs.persist)
 	footer.appendTo(document.getElementById("footer"))
 
 	// set up the router and stuff
@@ -68,7 +68,7 @@ app.init = async function(){
 		fetch("/ln/terms.json").then(owo=>owo.json())
 	])
 
-	let presist = app.getSettings()
+	let persist = app.getSettings()
 
-	return app({volumeList, terms, presist})
+	return app({volumeList, terms, persist})
 }

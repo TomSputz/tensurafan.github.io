@@ -1,0 +1,92 @@
+<head>
+        <style>
+            body {
+                margin: 0
+            }
+    
+            [id^="nav-"] {
+                background: rgba(0, 0, 0, 0);
+                border: none;
+                padding: 0;
+                margin: 0;
+                width: 40px;
+                overflow: hidden;
+                transition: background ease-in 50ms;
+                border-color: rgba(0,0,0,0.2);
+                border-width: 1px;
+            }
+    
+            [id^="nav-"]:hover {
+                background: rgba(0, 0, 0, 0.1);
+            }
+    
+            .nav {
+                height: 40px;
+                display: flex;
+                flex-direction: row;
+                background: grey;
+            }
+    
+            .title {
+                margin: auto;
+            }
+    
+            #nav-menu {
+                border-left-style: solid;
+            }
+            #nav-back {
+                border-right-style: solid;
+            }
+        </style>
+    
+        <!-- Enable [ripple] class to allow buttons to ripple when clicked -->
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                for (const button of document.querySelectorAll('.ripple')) {
+                    button.addEventListener("click", ({ target, x, y }) => {
+                        const oldRipple = target.querySelector(".ripple-anim")
+                        if (oldRipple)
+                            oldRipple.parentNode.removeChild(oldRipple)
+    
+                        const ripple = document.createElement("span")
+                        ripple.classList.add("ripple-anim")
+    
+                        const radius = Math.max(target.offsetWidth, target.offsetHeight)
+                        ripple.style.top = y - radius / 2 - target.offsetTop
+                        ripple.style.left = x - radius / 2 - target.offsetLeft
+                        ripple.style.height = ripple.style.width = radius
+    
+                        target.appendChild(ripple)
+                    })
+                }
+            })
+        </script>
+        <style>
+            .ripple {
+                position: relative;
+            }
+    
+            .ripple-anim {
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.4);
+                transform: scale(0);
+                position: absolute;
+                animation: rippleDrop .6s linear;
+                opacity: 1;
+            }
+    
+            @keyframes rippleDrop {
+                100% {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        </style>
+    </head>
+    <div class=nav>
+        <button class=ripple id=nav-back>
+            <</button> <div class=title>A Title</div>
+    <button class=ripple id=nav-menu>M</button>
+    </div>

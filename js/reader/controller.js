@@ -1,4 +1,4 @@
-app.initReader = async function(volumes, routerInstance, namePickerInstance, terms, globalTermchoices, presistantConfigs){
+app.initReader = async function(volumes, routerInstance, namePickerInstance, terms, globalTermchoices, persistantConfigs){
 	let template = await fetch("/js/reader/view.html").then(owo=>owo.text())
 
 	let view = proxymity(template, {
@@ -62,8 +62,8 @@ app.initReader = async function(volumes, routerInstance, namePickerInstance, ter
 					block: "center"
 				})
 			}
-			else if (presistantConfigs.topLine && presistantConfigs.topLine[volumeId]){
-				let line = document.getElementById("line_" + presistantConfigs.topLine[volumeId])
+			else if (persistantConfigs.topLine && persistantConfigs.topLine[volumeId]){
+				let line = document.getElementById("line_" + persistantConfigs.topLine[volumeId])
 				line.scrollIntoView({block: "start"})
 			}
 
@@ -278,9 +278,9 @@ app.initReader = async function(volumes, routerInstance, namePickerInstance, ter
 
 		let overlappings = document.elementFromPoint(navBarBox.width/2, navBarBox.bottom + 1)
 
-		presistantConfigs.topLine = presistantConfigs.topLine || {}
+		persistantConfigs.topLine = persistantConfigs.topLine || {}
 
-		presistantConfigs.topLine[view.app.volumeId] = parseInt(overlappings.id.replace("line_", ""))
+		persistantConfigs.topLine[view.app.volumeId] = parseInt(overlappings.id.replace("line_", ""))
 
 		app.saveSettings()
 	}

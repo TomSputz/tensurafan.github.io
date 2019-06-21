@@ -1,14 +1,10 @@
-<div class="flex vhcenter"><!-- always visable -->
-	<button class="flex {:this.app.backClickable ? '' : 'bg-white':}|{backClickable}|" onclick="this.app.back()">
-		<span class="icon">
+<div class="bar"><!-- always visable -->
+	<button id=nav-back class="ripple flex" onclick="this.app.back()">
 			<span class="back"></span>
-		</span>
 	</button>
 	<h1 class="grow font-1.5em text-center marginless clickable" onclick="this.app.goHome()">Slime Reader</h1>
-	<button onclick="this.app.menuOpen = !this.app.menuOpen" class="flex">
-		<span class="icon">
+	<button id=nav-menu onclick="this.app.menuOpen = !this.app.menuOpen" class="flex ripple">
 			<span class="menu"></span>
-		</span>
 	</button>
 </div>
 <div class="{:this.app.menuOpen ? '' : 'hidden-state':}|{menuOpen}|"><!-- toggleable dropdown -->
@@ -31,13 +27,13 @@
 		<div class="basis">
 			<div class="padding-1"></div>
 			<div class="text-center">
-				<button onclick="fetch('/sw/refresh').then(owo=>owo.text()).then(owo=>document.location.reload())">Refresh App</button>
+				<button class="button" onclick="fetch('/sw/refresh').then(owo=>owo.text()).then(owo=>document.location.reload())">Refresh App</button>
 			</div>
 		</div>
 		<div class="basis">
 			<div class="padding-1"></div>
 			<div class="text-center">
-				<button onclick="window.app.footer.app.showInstructions = true; this.app.menuOpen = false">Instructions for Offline Use</button>
+				<button class="button" onclick="window.app.footer.app.showInstructions = true; this.app.menuOpen = false">Instructions for Offline Use</button>
 			</div>
 		</div>
 	</div>
@@ -50,4 +46,5 @@
 		</div>
 		<div class="basis"></div>
 	</div>
+	<div class="padding-1"></div>
 </div>

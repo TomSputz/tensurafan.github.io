@@ -57,6 +57,24 @@ async function app(initConfigs){
 	app.router.rout()
 
 	console.log(initConfigs)
+	
+	for (const button of document.querySelectorAll('.ripple')) {
+		button.addEventListener("click", ({ target, x, y }) => {
+			const oldRipple = target.querySelector(".ripple-anim")
+			if (oldRipple)
+				oldRipple.parentNode.removeChild(oldRipple)
+
+			const ripple = document.createElement("span")
+			ripple.classList.add("ripple-anim")
+
+			const radius = Math.max(target.offsetWidth, target.offsetHeight)
+			ripple.style.top = y - radius / 2 - target.offsetTop + "px"
+			ripple.style.left = (x - radius / 2 - target.offsetLeft) + "px"
+			ripple.style.height = ripple.style.width = radius+ "px"
+			
+			target.appendChild(ripple)
+		})
+	}
 }
 
 // Init ========================================================

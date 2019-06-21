@@ -6,8 +6,7 @@
 img {
 	max-width: 100%;
 }
-
-button, .button {
+.button {
 	font-size: 1em;
 	padding: calc(var(--base-padding) / 2) var(--base-padding);
 	border-radius: var(--base-border-radius);
@@ -21,6 +20,8 @@ button, .button {
 		0 /*Spread Radius*/
 		var(--color-button-text) /*color of shadow*/
 	;
+	display: inline-block;
+	cursor: pointer;
 }
 body {
 	font-family: sans-serif;

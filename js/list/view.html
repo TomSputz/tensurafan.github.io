@@ -1,7 +1,8 @@
 <div class="text-center padding-bottom-1">
-	<h2 class="paddingless marginless">Volumes List</h2>
+	<h2 class="paddingless marginless">Volume List</h2>
 	<small>(Click to Read)</small>
 </div>
+<!-- Feels like this should be iterating over the values of volumes. -->
 <!-- key: "volume" -->
 	<div onclick="this.app.read(this.app.volumes[this.volume].id)" class="block button clickable content-width">
 		{:this.app.volumes[this.volume].name:}|{volumes[this.volume].name}|

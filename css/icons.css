@@ -19,24 +19,33 @@
 	transition: all 0.5s;
 }
 
-.icon .back {
+button .back {
 	border: none;
 	width: 0.6em;
 	height: 0.6em;
-	margin: 0.2em;
+	margin: auto;
 	border-top: solid 0.25em currentcolor;
 	border-left: solid 0.25em currentcolor;
 	transform: rotate(-45deg);
 }
 
-.icon .menu {
+button .menu {
+	width: 1em;
+	height: 0.8em;
+	position: relative;
+	margin: auto;
 	border-top: solid 0.15em currentcolor;
 	border-bottom: solid 0.15em currentcolor;
 }
-.icon .menu::before {
-	top: 0.25em;
-	width: 100%;
-	border-top: solid 0.15em currentcolor;
+button .menu::before {
+	content: "";
+	top: calc(50% - 0.15em / 2);	
+	left: 0;
+	width: 100%;	
+	background: currentcolor;
+	height: 0.15em;
+	margin: auto;	
+	position: absolute;	
 }
 
 .icon .footnote {

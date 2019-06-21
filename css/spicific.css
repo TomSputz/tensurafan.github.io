@@ -5,7 +5,65 @@
 	left: 0;
 	z-index: 1;
 }
+#nav .bar {
+	height: 40px;
+	display: flex;
+	flex-direction: row;
+	border-bottom: rgba(0,0,0,0.1) solid 1px;
+}
+#nav .bar .text-center { 
+	margin: auto;
+}
+[id^="nav-"] {
+	background: rgba(0, 0, 0, 0);
+	border: none;
+	padding: 0;
+	margin: 0;
+	width: 40px;
+	overflow: hidden;
+	transition: background ease-in 100ms;
+	border-color: rgba(0,0,0,0.2);
+	border-width: 1px;
+	cursor: pointer;
+}
 
+[id^="nav-"]:hover:not([disabled]) {
+	background: rgba(0, 0, 0, 0.1);
+}
+[id^="nav-"].disabled .ripple-anim {
+	opacity:0;
+}
+#nav-menu {
+	border-left-style: solid;
+}
+#nav-back {
+	border-right-style: solid;
+}
+
+.ripple {
+	position: relative;
+}
+
+.ripple-anim {
+	width: 0;
+	height: 0;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.2);
+	transform: scale(0);
+	position: absolute;
+	animation: rippleDrop .6s linear;
+	opacity: 1;
+}
+.dark .ripple-anim,
+.oled .ripple-anim {
+	background: rgba(255, 255, 255, 0.2);
+}
+@keyframes rippleDrop {
+	100% {
+		transform: scale(2);
+		opacity: 0;
+	}
+}
 #app {
 	margin-top: var(--menu-height);
 	padding-bottom: 0;

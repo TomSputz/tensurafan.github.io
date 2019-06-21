@@ -41,7 +41,11 @@
 #nav-back {
 	border-right-style: solid;
 }
-
+#nav-menu img {
+	width: 40%;
+	height: 40%;
+	margin: auto;
+}
 .ripple {
 	position: relative;
 }

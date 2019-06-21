@@ -59,7 +59,8 @@ async function app(initConfigs){
 	console.log(initConfigs)
 	
 	for (const button of document.querySelectorAll('.ripple')) {
-		button.addEventListener("click", ({ target, x, y }) => {
+		button.addEventListener("click", ({ path, x, y }) => {
+			const target = path.find(el => el.classList.contains("ripple"))
 			const oldRipple = target.querySelector(".ripple-anim")
 			if (oldRipple)
 				oldRipple.parentNode.removeChild(oldRipple)

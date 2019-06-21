@@ -29,24 +29,6 @@ button .back {
 	transform: rotate(-45deg);
 }
 
-button .menu {
-	width: 1em;
-	height: 0.8em;
-	position: relative;
-	margin: auto;
-	border-top: solid 0.15em currentcolor;
-	border-bottom: solid 0.15em currentcolor;
-}
-button .menu::before {
-	content: "";
-	top: calc(50% - 0.15em / 2);	
-	left: 0;
-	width: 100%;	
-	background: currentcolor;
-	height: 0.15em;
-	margin: auto;	
-	position: absolute;	
-}
 
 .icon .footnote {
 	height: 0.8em;
